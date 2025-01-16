@@ -32,9 +32,5 @@ public class Plans {
     @Column(name="amount")
     private Long amount;
     @Column(name="subscription")
-    private Boolean subscription;
-
-    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User userId;
+    private Boolean subscription=false;
 }

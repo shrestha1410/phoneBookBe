@@ -24,7 +24,17 @@ public class SecurityConfig {
                 authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                     .requestMatchers("/login/**", "/register/**").permitAll()
                     .anyRequest().authenticated())
-            .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessHandler((request, response, authentication) -> {
+                            response.setStatus(200);
+                            response.getWriter().write("Logout successful");
+                            response.getWriter().flush();
+                        })
+                        .deleteCookies("JSESSIONID")
+                        .invalidateHttpSession(true)
+                );
         return http.build();
     }
     @Bean

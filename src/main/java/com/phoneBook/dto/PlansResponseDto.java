@@ -11,7 +11,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class PlansResponse {
+public class PlansResponseDto {
     private Long id;
     private  String planName;
     private Long amount;

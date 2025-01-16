@@ -12,5 +12,6 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String mobileNumber;
-    private String pinCode;
+    private String addressLine1;
+    private String addressLine2;
 }

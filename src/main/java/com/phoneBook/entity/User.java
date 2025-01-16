@@ -22,4 +22,7 @@ public class User extends  CommonUserDetails{
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private List<FamilyAndFriends> familyAndFriend;
+    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @JoinColumn(name = "plan_id")
+    private Plans plan;
 }
