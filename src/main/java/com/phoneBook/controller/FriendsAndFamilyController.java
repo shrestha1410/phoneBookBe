@@ -20,7 +20,7 @@ public class FriendsAndFamilyController {
   }
   @GetMapping("/contact/{id}")
   public FamilyAndFriendsDto getDetailsOfContact(@PathVariable Long id){
-    return friendsAndFamilyService.getListByContactId(id);
+    return friendsAndFamilyService.getContactsByContactId(id);
 }
   @PostMapping("/add/{id}")
     public Long addFamilyAndFriendContact(@RequestBody FamilyAndFriendsRequestDto familyAndFriendsRequestDto,@PathVariable Long id ){

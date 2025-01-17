@@ -62,7 +62,7 @@ public class FamilyAndFriendsServiceImpl implements FamilyAndFriendsService{
     }
 
     @Override
-    public FamilyAndFriendsDto getListByContactId(Long id) {
+    public FamilyAndFriendsDto getContactsByContactId(Long id) {
        Optional<FamilyAndFriends> familyAndFriends=familyAndFriendsRepository.findById(id);
        if(familyAndFriends.isPresent()){
         FamilyAndFriends existingFamilyAndFriends=familyAndFriends.get();

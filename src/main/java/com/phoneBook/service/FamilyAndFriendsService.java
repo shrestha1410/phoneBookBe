@@ -7,6 +7,6 @@ import java.util.List;
 public interface FamilyAndFriendsService {
     public List<FamilyAndFriendsDto> getListByUserId(Long id);
     public Long addFamilyAndFriend(FamilyAndFriendsRequestDto familyAndFriendsRequestDto,Long id);
-    public FamilyAndFriendsDto getListByContactId(Long id);
+    public FamilyAndFriendsDto getContactsByContactId(Long id);
     public Long updateContact(Long id,FamilyAndFriendsRequestDto familyAndFriendsRequestDto);
 }

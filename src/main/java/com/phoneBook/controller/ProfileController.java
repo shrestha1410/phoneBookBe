@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProfileController {
     @Autowired
     private ProfileService profileService;
-    @GetMapping("/")
+    @GetMapping("/{mobileNumber}")
     public ProfileResponseDto getProfileDetails(@PathVariable Long mobileNumber){
       return  profileService.getProfile(mobileNumber);
 

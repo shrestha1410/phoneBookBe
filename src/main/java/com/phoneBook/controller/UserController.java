@@ -14,7 +14,7 @@ import com.phoneBook.service.UserService;
 public class UserController {
     @Autowired
     private UserService userService;
-       @GetMapping("/getUserById/{id}")
+    @GetMapping("/getUserById/{id}")
     public UserDto getUserDetailsById(@PathVariable Long id){
         return userService.getUserById(id);
     }
