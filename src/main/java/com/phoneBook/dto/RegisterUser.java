@@ -1,5 +1,6 @@
 package com.phoneBook.dto;
 
+import com.phoneBook.utils.RoleType;
 import lombok.*;
 
 @AllArgsConstructor
@@ -14,4 +15,5 @@ public class RegisterUser {
     private String password;
     private String addressLine1;
     private String addressLine2;
+    private RoleType role;
 }
