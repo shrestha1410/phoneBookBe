@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -13,4 +15,5 @@ import lombok.Setter;
 @Builder
 public class LoginResponse {
     private String token;
+    private Set<String> loginUserIs;
 }
