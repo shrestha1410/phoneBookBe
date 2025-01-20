@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class JwtUtil {
    private Map<String,String> tokenCache =new HashMap<>();
 
-    public static final long JWT_TOKEN_VALIDITY = 50  ;
+    public static final long JWT_TOKEN_VALIDITY = 50 * 60 * 60 ;
 
     private String secret = "afafasfafafasfasfasfafacasdasfasxASFACASDFACASDFASFASFDAFASFASDAADSCSDFADCVSGCFVADXCcadwavfsfarvf";
 
