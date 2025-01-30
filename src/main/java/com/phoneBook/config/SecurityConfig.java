@@ -1,5 +1,7 @@
 package com.phoneBook.config;
 
+import com.phoneBook.exception.GlobalExceptionHandler;
+import com.phoneBook.exception.UnAuthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +19,8 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig {
     @Autowired
     private JwtFilter filter;
-
+    @Autowired
+    private AuthEntryPointJwt authEntryPointJwt;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().disable()
@@ -36,19 +39,7 @@ public class SecurityConfig {
                         })
                         .deleteCookies("JSESSIONID")
                         .invalidateHttpSession(true)
-                );
+                ).exceptionHandling(exception->exception.authenticationEntryPoint(authEntryPointJwt));
         return http.build();
     }
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:4200");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
-    }
-
 }

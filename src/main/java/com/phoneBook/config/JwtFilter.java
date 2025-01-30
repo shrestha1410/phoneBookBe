@@ -2,6 +2,7 @@ package com.phoneBook.config;
 
 import java.io.IOException;
 
+import com.phoneBook.exception.UnAuthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -47,16 +48,15 @@ public class JwtFilter extends OncePerRequestFilter {
                 userName = this.jwtUtil.getUsernameFromToken(token);
             } catch (IllegalArgumentException e) {
                 logger.info("Illegal Argument while fetching the username !!");
-                e.printStackTrace();
+                throw new UnAuthorizedException("Illegal Argument while fetching the username !!");
             } catch (ExpiredJwtException e) {
                 logger.info("Given jwt token is expired !!");
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token expired");
-                return;
+                throw new UnAuthorizedException("Given jwt token is expired !!");
             } catch (MalformedJwtException e) {
                 logger.info("Some changed has done in token !! Invalid Token");
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
+                throw new UnAuthorizedException("Some changed has done in token !! Invalid Token");
+            } catch (Exception e){
+                throw new UnAuthorizedException(e.getMessage());
             }
         } else {
             logger.info("Invalid Header Value !! ");
